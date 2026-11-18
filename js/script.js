@@ -24,13 +24,15 @@ const playlist = [
     title: "Madhuvaramae",
     fullTitle: "Madhuvaramae | Return of The Dragon",
     sub: "Leon James | Pradeep Ranganathan, Kayadu Lohar",
-    src: "./assets/mp3/madhuvaramae.webm"
+    src: "./assets/mp3/madhuvaramae.webm#t=6",
+    startTime: 6
   },
   {
     title: "Mangala Nadaswaram",
     fullTitle: "Mangala Nadaswaram & Shehnai",
     sub: "Auspicious Traditional Wedding Dhun",
-    src: "./assets/mp3/asd.mp3"
+    src: "./assets/mp3/asd.mp3",
+    startTime: 0
   }
 ];
 
@@ -54,12 +56,27 @@ function initMusicPlayer() {
 
   if (!audioPlayer) return;
 
+  function applyTrackStartTime() {
+    const track = playlist[currentTrackIndex];
+    if (track && track.startTime && audioPlayer.currentTime < (track.startTime - 0.3)) {
+      try {
+        audioPlayer.currentTime = track.startTime;
+      } catch (e) {}
+    }
+  }
+
   function loadTrack(index, playImmediate = true) {
     currentTrackIndex = (index + playlist.length) % playlist.length;
     const track = playlist[currentTrackIndex];
 
     audioPlayer.src = track.src;
     audioPlayer.load();
+
+    if (audioPlayer.readyState >= 1) {
+      applyTrackStartTime();
+    } else {
+      audioPlayer.addEventListener('loadedmetadata', applyTrackStartTime, { once: true });
+    }
 
     if (titleEl) titleEl.textContent = track.title;
     if (statusEl) {
@@ -78,8 +95,10 @@ function initMusicPlayer() {
     });
 
     if (playImmediate) {
+      applyTrackStartTime();
       audioPlayer.play().then(() => {
         isAudioPlaying = true;
+        applyTrackStartTime();
         if (controller) controller.classList.add('playing');
         if (playIcon) playIcon.className = 'fa fa-pause';
         if (statusEl) statusEl.innerHTML = 'Playing <div class="sound-wave"><span></span><span></span><span></span></div>';
@@ -89,10 +108,17 @@ function initMusicPlayer() {
     }
   }
 
+  // Ensure start time is respected when playing starts (handles mobile browsers)
+  audioPlayer.addEventListener('playing', () => {
+    applyTrackStartTime();
+  });
+
   function togglePlay() {
     if (audioPlayer.paused) {
+      applyTrackStartTime();
       audioPlayer.play().then(() => {
         isAudioPlaying = true;
+        applyTrackStartTime();
         if (controller) controller.classList.add('playing');
         if (playIcon) playIcon.className = 'fa fa-pause';
         if (statusEl) statusEl.innerHTML = 'Playing <div class="sound-wave"><span></span><span></span><span></span></div>';
@@ -190,7 +216,14 @@ function initEnvelope() {
 
     // Trigger music
     if (audioPlayer && audioPlayer.paused) {
+      const track = playlist[currentTrackIndex];
+      if (track && track.startTime && audioPlayer.currentTime < (track.startTime - 0.3)) {
+        try { audioPlayer.currentTime = track.startTime; } catch (e) {}
+      }
       audioPlayer.play().then(() => {
+        if (track && track.startTime && audioPlayer.currentTime < (track.startTime - 0.3)) {
+          try { audioPlayer.currentTime = track.startTime; } catch (e) {}
+        }
         isAudioPlaying = true;
         const controller = document.getElementById('music-controller');
         const playIcon = document.getElementById('music-disc-icon');
