@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Wedding Invitation | Chi. Rajesh Goud & Chi.La.Sow. Spandana Keerthi</title>
+  
+  <link rel="shortcut icon" href="favicon.png" type="image/png">
+  <meta name="description" content="Wedding Invitation of Chi. Rajesh Goud with Chi.La.Sow. Spandana Keerthi on Wednesday, 25th November 2026 at Aarthi Reddy Gardens, Mahabubabad.">
+  <meta property="og:title" content="Wedding Invitation | Rajesh & Spandana Keerthi">
+  <meta property="og:description" content="Join us to celebrate the auspicious wedding of Rajesh & Spandana Keerthi on 25th Nov 2026 at Aarthi Reddy Gardens, Mahabubabad.">
+  <meta property="og:image" content="./assets/img/couple_hero.jpg">
+  <meta property="og:type" content="website">
+
+  <!-- Google Fonts: Luxury Serif, Romantic Script & Authentic Telugu Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Cinzel:wght@500;600;700;800&family=Great+Vibes&family=Mandali&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Poppins:wght@300;400;500;600;700&family=Tiro+Telugu:ital@0;1&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="./css/style.css">
+</head>
+<body class="lang-both-active">
+
+  <!-- Background Petals and Sparkles Canvas -->
+  <canvas id="petals-canvas"></canvas>
+
+  <!-- Audio Element (Multi-track Player) -->
+  <audio id="wedding-audio" src="./assets/mp3/madhuvaramae.webm" preload="auto"></audio>
+
+  <!-- ==========================================================
+       ROYAL ENVELOPE MODAL (OPENING CEREMONY)
+       ========================================================== -->
+  <div id="envelope-overlay" class="envelope-overlay">
+    <div class="envelope-card">
+      <!-- Ornate Lord Ganesha -->
+      <svg class="envelope-ganesha" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="50" cy="50" r="46" stroke="#d4af37" stroke-width="2" stroke-dasharray="4 2"/>
+        <path d="M50 18 C42 18 36 24 36 32 C36 38 40 43 45 46 C42 49 40 54 40 60 C40 70 48 78 58 78 C68 78 74 70 74 62 C74 55 69 50 63 47 C67 44 70 39 70 32 C70 24 62 18 50 18 Z" stroke="#fbe38e" stroke-width="2" fill="none"/>
+        <path d="M50 25 L50 40 M46 32 L54 32" stroke="#d4af37" stroke-width="2"/>
+        <circle cx="50" cy="54" r="5" fill="#fbe38e"/>
+        <path d="M50 59 Q48 72 58 74 Q64 74 64 68 Q64 63 56 62" stroke="#d4af37" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+      </svg>
+
+      <div class="envelope-shloka telugu-text">|| శ్రీరస్తు శుభమస్తు అవిఘ్నమస్తు ||</div>
+      <div class="envelope-sub">Wedding Invitation</div>
+
+      <div class="envelope-monogram">R & S</div>
+
+      <h1 class="envelope-couple-names">Rajesh & Keerthi</h1>
+      <p class="envelope-date-preview"><i class="fa fa-calendar-check"></i> Wednesday, 25th November 2026</p>
+
+      <button id="open-envelope-btn" class="seal-btn">
+        <i class="fa fa-envelope-open-text"></i> Open Invitation | శుభలేఖ
+      </button>
+
+      <button id="skip-envelope-btn" class="skip-btn">Continue to invitation card</button>
+    </div>
+  </div>
+
+  <!-- ==========================================================
+       MULTI-TRACK WEDDING MUSIC PLAYER (2 SONGS ONLY)
+       ========================================================== -->
+  <div id="music-controller" class="music-controller" title="Wedding Music Player">
+    <!-- Prev Track Button -->
+    <button id="prev-track-btn" class="music-nav-btn" title="Previous Song">
+      <i class="fa fa-step-backward"></i>
+    </button>
+
+    <!-- Play/Pause Disc -->
+    <div id="music-disc" class="music-disc" title="Play / Pause">
+      <i id="music-disc-icon" class="fa fa-music"></i>
+    </div>
+
+    <!-- Next Track Button -->
+    <button id="next-track-btn" class="music-nav-btn" title="Next Song">
+      <i class="fa fa-step-forward"></i>
+    </button>
+
+    <!-- Current Track Info -->
+    <div class="music-info">
+      <span id="music-title" class="music-title">Madhuvaramae</span>
+      <span id="music-status-text" class="music-status">Play Music</span>
+    </div>
+
+    <!-- Playlist Button -->
+    <button id="playlist-toggle-btn" class="playlist-toggle-btn" title="View 2 Wedding Songs">
+      <i class="fa fa-list"></i> 2 Songs
+    </button>
+  </div>
+
+  <!-- Playlist Popup Drawer -->
+  <div id="playlist-drawer" class="playlist-drawer">
+    <div class="playlist-header">
+      <h4><i class="fa fa-music"></i> Wedding Songs</h4>
+      <button id="playlist-close" class="playlist-close">&times;</button>
+    </div>
+    <ul class="playlist-items">
+      <li class="playlist-item active" data-index="0">
+        <span class="track-num">1</span>
+        <div class="track-details">
+          <div class="track-name">Madhuvaramae</div>
+          <div class="track-sub">Return of The Dragon | Leon James</div>
+        </div>
+        <i class="fa fa-volume-up track-playing-icon"></i>
+      </li>
+      <li class="playlist-item" data-index="1">
+        <span class="track-num">2</span>
+        <div class="track-details">
+          <div class="track-name">Mangala Nadaswaram & Shehnai</div>
+          <div class="track-sub">Auspicious Wedding Dhun</div>
+        </div>
+        <i class="fa fa-volume-up track-playing-icon"></i>
+      </li>
+    </ul>
+  </div>
+
+  <!-- ==========================================================
+       TOP NAVIGATION BAR WITH LANGUAGE SWITCHER
+       ========================================================== -->
+  <header class="top-nav">
+    <div class="nav-brand">
+      Rajesh <span>&</span> Keerthi
+    </div>
+    <div class="nav-actions">
+      <div class="lang-switch">
+        <button class="lang-btn active" data-lang="both" title="Show Both Languages">Both</button>
+        <button class="lang-btn" data-lang="en" title="Show English Only">English</button>
+        <button class="lang-btn" data-lang="te" title="Show Telugu Only">తెలుగు</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==========================================================
+       MAIN INVITATION CARD CONTAINER
+       ========================================================== -->
+  <main class="main-wrapper">
+    <article class="invitation-frame">
+      
+      <!-- Four Royal Corner Ornaments -->
+      <svg class="corner-ornament top-left" viewBox="0 0 100 100" fill="none">
+        <path d="M0 0 L90 0 C70 10 50 30 40 50 C30 70 10 70 0 90 Z" fill="rgba(212, 175, 55, 0.15)"/>
+        <path d="M5 5 L80 5 C60 15 45 35 35 55 C25 75 15 75 5 80 Z" stroke="#d4af37" stroke-width="1.5"/>
+        <circle cx="20" cy="20" r="5" fill="#d4af37"/>
+      </svg>
+      <svg class="corner-ornament top-right" viewBox="0 0 100 100" fill="none">
+        <path d="M0 0 L90 0 C70 10 50 30 40 50 C30 70 10 70 0 90 Z" fill="rgba(212, 175, 55, 0.15)"/>
+        <path d="M5 5 L80 5 C60 15 45 35 35 55 C25 75 15 75 5 80 Z" stroke="#d4af37" stroke-width="1.5"/>
+        <circle cx="20" cy="20" r="5" fill="#d4af37"/>
+      </svg>
+      <svg class="corner-ornament bottom-left" viewBox="0 0 100 100" fill="none">
+        <path d="M0 0 L90 0 C70 10 50 30 40 50 C30 70 10 70 0 90 Z" fill="rgba(212, 175, 55, 0.15)"/>
+        <path d="M5 5 L80 5 C60 15 45 35 35 55 C25 75 15 75 5 80 Z" stroke="#d4af37" stroke-width="1.5"/>
+        <circle cx="20" cy="20" r="5" fill="#d4af37"/>
+      </svg>
+      <svg class="corner-ornament bottom-right" viewBox="0 0 100 100" fill="none">
+        <path d="M0 0 L90 0 C70 10 50 30 40 50 C30 70 10 70 0 90 Z" fill="rgba(212, 175, 55, 0.15)"/>
+        <path d="M5 5 L80 5 C60 15 45 35 35 55 C25 75 15 75 5 80 Z" stroke="#d4af37" stroke-width="1.5"/>
+        <circle cx="20" cy="20" r="5" fill="#d4af37"/>
+      </svg>
+
+      <!-- 1. Sacred Lord Ganesha & Auspicious Shlokam -->
+      <section class="sacred-header">
+        <svg class="ganesha-emblem" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="50" cy="50" r="47" stroke="#d4af37" stroke-width="2"/>
+          <circle cx="50" cy="50" r="43" stroke="#fbe38e" stroke-width="1" stroke-dasharray="3 3"/>
+          <path d="M50 16 C42 16 35 22 35 31 C35 37 39 42 44 45 C41 48 39 53 39 59 C39 69 47 78 57 78 C67 78 73 70 73 62 C73 55 68 50 62 47 C66 44 69 39 69 31 C69 22 62 16 50 16 Z" stroke="#780016" stroke-width="2.5" fill="rgba(212, 175, 55, 0.1)"/>
+          <path d="M50 23 L50 38 M45 30 L55 30" stroke="#780016" stroke-width="2"/>
+          <circle cx="50" cy="52" r="4" fill="#d4af37"/>
+          <path d="M50 57 Q48 70 58 72 Q64 72 64 66 Q64 61 56 60" stroke="#780016" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+        </svg>
+
+        <h2 class="sacred-chant telugu-text">|| శ్రీరస్తు శుభమస్తు అవిఘ్నమస్తు ||</h2>
+        <p class="lang-en-content sacred-chant" style="font-family: 'Cinzel', serif; font-size: 1.05rem; letter-spacing: 2px;">
+          Srirasthu ! Shubhamasthu !! Avighnamasthu !!!
+        </p>
+
+        <div class="lang-te-content sacred-shloka telugu-text">
+          శ్లో॥ ఆదిత్యాది గ్రహస్సర్వేః | స్వనక్షత్రాః సరాశయః ॥<br>
+          కుర్వంతు మంగళం శాభ్యాం యయోరుద్వాహ పత్రికా॥
+        </div>
+
+        <div class="royal-divider">
+          <div class="line"></div>
+          <i class="fa fa-star icon"></i>
+          <div class="line"></div>
+        </div>
+      </section>
+
+      <!-- 2. Solicit Presence Announcement -->
+      <section class="invitation-intro">
+        <div class="lang-en-content">
+          <p class="lead-text">Wedding Invitation</p>
+          <p class="sub-lead">
+            We solicit your gracious presence with family and friends on the auspicious occasion of the marriage of our only son
+          </p>
+        </div>
+
+        <div class="lang-te-content telugu-text">
+          <p class="lead-text" style="font-size: 1.35rem;">శుభలేఖ</p>
+          <p class="sub-lead">
+            స్వస్తిశ్రీ చాంద్రమానేన శ్రీ పరాభవ నామ సంవత్సర కార్తీక బ॥ పాడ్యమి సుముహూర్తమున మా ఏకైక పుత్రుని వివాహ మహోత్సవమునకు తామెల్లరు సకుటుంబ సపరివార సమేతముగా విచ్చేసి నూతన వధూవరులను ఆశీర్వదించ ప్రార్థన.
+          </p>
+        </div>
+      </section>
+
+      <!-- 3. The Couple Showcase -->
+      <section class="couple-showcase">
+        <!-- Hero Couple Portrait -->
+        <div class="hero-portrait-wrap">
+          <img src="./assets/img/couple_hero.jpg" alt="Rajesh & Spandana Keerthi" class="hero-portrait-img zoomable-img" data-fullsrc="./assets/img/couple_hero.jpg">
+        </div>
+
+        <div class="couple-names-wrap">
+          <!-- Groom Details -->
+          <div class="groom-box">
+            <span class="person-prefix lang-en-content">The Groom</span>
+            <span class="person-prefix lang-te-content telugu-text">వరుడు</span>
+            
+            <h1 class="person-name lang-en-content">Chi. Rajesh Goud</h1>
+            <h1 class="person-name lang-te-content telugu-text">చి॥ రాజేష్ గౌడ్</h1>
+
+            <p class="person-details lang-en-content">
+              <strong>Our Only Son</strong><br>
+              Son of <strong>Smt. & Sri Bhattu Upendra - Yaladri Goud</strong><br>
+              R/o Nallella Vill, Kuravi Mdl, Mahabubabad Dist.
+            </p>
+            <p class="person-details lang-te-content telugu-text">
+              <strong>మా ఏకైక పుత్రుడు</strong><br>
+              శ్రీమతి & శ్రీ <strong>భట్టు ఉపేంద్ర - యాలాద్రి గౌడ్</strong> గార్ల కుమారుడు<br>
+              గ్రా॥ నల్లెల్ల, మం॥ కురవి, జిల్లా॥ మహబూబాబాద్.
+            </p>
+          </div>
+
+          <!-- Auspicious Intertwined Knot -->
+          <div class="knot-separator">
+            <div class="knot-badge">&</div>
+          </div>
+
+          <!-- Bride Details -->
+          <div class="bride-box">
+            <span class="person-prefix lang-en-content">The Bride</span>
+            <span class="person-prefix lang-te-content telugu-text">వధువు</span>
+
+            <h1 class="person-name lang-en-content">Chi.La.Sow. Spandana Keerthi <span style="font-size: 1.5rem; font-weight: 500;">(Keerthi)</span></h1>
+            <h1 class="person-name lang-te-content telugu-text">చి॥ల॥సౌ॥ స్పందన కీర్తి <span style="font-size: 1.5rem; font-weight: 500;">(కీర్తి)</span></h1>
+
+            <p class="person-details lang-en-content">
+              <strong>Only Daughter of Smt. & Sri Gandu Lalitha - Gandu Narsaiah Goud</strong><br>
+              R/o Modugulagudem, Mandal: Kuravi, Dist: Mahabubabad
+            </p>
+            <p class="person-details lang-te-content telugu-text">
+              మహబూబాబాద్ జిల్లా, కురవి మం॥, మోద్గులగూడెం వాస్తవ్యులు<br>
+              శ్రీమతి & శ్రీ <strong>గండు లలిత - నర్సయ్య గౌడ్</strong> గార్ల ఏకైక పుత్రిక
+            </p>
+          </div>
+        </div>
+
+        <!-- Interactive "Bless the Couple" (ఆశీర్వదించండి) Confetti Cannon -->
+        <div class="bless-couple-container">
+          <button id="bless-couple-btn" class="bless-btn">
+            <i class="fa fa-heart"></i> Bless Couple | ఆశీర్వదించండి
+            <span id="bless-count-badge" class="bless-count-badge">148+</span>
+          </button>
+        </div>
+      </section>
+
+      <!-- Traditional Animated Illustration (Save the Date GIF) -->
+      <div class="wedding-gif-banner">
+        <img src="./assets/img/ggg.gif" alt="Save The Date Illustration" class="gif-frame" loading="lazy">
+      </div>
+
+      <!-- 4. Real-time Countdown Timer -->
+      <section class="countdown-section">
+        <h3 class="countdown-title lang-en-content"><i class="fa fa-clock"></i> Countdown to Muhurtham</h3>
+        <h3 class="countdown-title lang-te-content telugu-text"><i class="fa fa-clock"></i> సుముహూర్తమునకు ఇంకా...</h3>
+        
+        <div class="countdown-grid">
+          <div class="timer-box">
+            <div id="days-count" class="timer-num">--</div>
+            <div class="timer-label lang-en-content">Days</div>
+            <div class="timer-label lang-te-content telugu-text">రోజులు</div>
+          </div>
+          <div class="timer-box">
+            <div id="hours-count" class="timer-num">--</div>
+            <div class="timer-label lang-en-content">Hours</div>
+            <div class="timer-label lang-te-content telugu-text">గంటలు</div>
+          </div>
+          <div class="timer-box">
+            <div id="minutes-count" class="timer-num">--</div>
+            <div class="timer-label lang-en-content">Minutes</div>
+            <div class="timer-label lang-te-content telugu-text">నిమిషాలు</div>
+          </div>
+          <div class="timer-box">
+            <div id="seconds-count" class="timer-num">--</div>
+            <div class="timer-label lang-en-content">Seconds</div>
+            <div class="timer-label lang-te-content telugu-text">సెకన్లు</div>
+          </div>
+        </div>
+
+        <p id="countdown-note" class="countdown-note">
+          <i class="fa fa-heart"></i> Wednesday, 25th November 2026 at 09:19 AM
+        </p>
+      </section>
+
+      <!-- Traditional Bridal Doli Animation GIF -->
+      <div class="ritual-gif-wrap">
+        <img src="./assets/img/cvb.gif" alt="Bridal Palki Procession" class="ritual-gif" loading="lazy">
+      </div>
+
+      <!-- 5. Auspicious Muhurtham & Function Details -->
+      <section class="events-section">
+        <div class="section-heading">
+          <h3 class="lang-en-content">Ceremony & Muhurtham</h3>
+          <h3 class="lang-te-content telugu-text">శుభ ముహూర్తము & విందు</h3>
+          <div class="royal-divider">
+            <div class="line"></div>
+            <i class="fa fa-gem icon"></i>
+            <div class="line"></div>
+          </div>
+        </div>
+
+        <div class="events-grid">
+          <!-- Muhurtham Card -->
+          <div class="event-card featured">
+            <span class="event-badge">Auspicious Sumuhurtham</span>
+            <div class="event-icon"><i class="fa fa-ring"></i></div>
+            
+            <h4 class="event-title lang-en-content">Wedding Muhurtham</h4>
+            <h4 class="event-title lang-te-content telugu-text">కళ్యాణ సుముహూర్తం</h4>
+
+            <p class="event-date">Wednesday, 25th November 2026</p>
+            <p class="event-time"><i class="fa fa-clock"></i> 09:19 AM</p>
+
+            <div class="event-astrology telugu-text">
+              రోహిణి నక్షత్రయుక్త - ధనస్సు లగ్న పుష్కరాంశ సుముహూర్తమున
+            </div>
+
+            <!-- Traditional Garland Exchange Animation -->
+            <div style="margin: 10px 0;">
+              <img src="./assets/img/asd (1).gif" alt="Varmala Garland Ceremony" style="max-height: 90px; width: auto; border-radius: 8px;" loading="lazy">
+            </div>
+
+            <p class="event-desc lang-en-content">
+              Solemnized with Vedic rituals and hymns by respected Brahmin scholars.
+            </p>
+            <p class="event-desc lang-te-content telugu-text">
+              వేదమూర్తులైన బ్రాహ్మణోత్తములచే నిర్ణయించబడిన సుముహూర్తమున.
+            </p>
+
+            <div style="margin-top: 15px;">
+              <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Wedding+of+Rajesh+Goud+%26+Spandana+Keerthi&dates=20261125T034900Z/20261125T093000Z&details=Auspicious+Marriage+Ceremony+of+Chi.+Rajesh+Goud+with+Chi.La.Sow.+Spanda+Keerthi+(Keerthi).+Muhurtham:+09:19+AM.+Lunch:+12:30+PM.&location=Aarthi+Reddy+Gardens,+Yellandu+Bypass+Road,+Mahabubabad" target="_blank" rel="noopener noreferrer" class="action-btn secondary" style="font-size: 0.82rem; padding: 8px 16px;">
+                <i class="fa fa-calendar-plus"></i> Add to Calendar
+              </a>
+            </div>
+          </div>
+
+          <!-- Feast / Lunch Card -->
+          <div class="event-card">
+            <span class="event-badge">Kalyana Vindhu</span>
+            <div class="event-icon"><i class="fa fa-utensils"></i></div>
+
+            <h4 class="event-title lang-en-content">Grand Wedding Lunch</h4>
+            <h4 class="event-title lang-te-content telugu-text">కళ్యాణ విందు</h4>
+
+            <p class="event-date">Wednesday, 25th November 2026</p>
+            <p class="event-time"><i class="fa fa-clock"></i> 12:30 PM Onwards</p>
+
+            <div class="event-astrology lang-en-content">
+              Traditional South Indian Wedding Feast
+            </div>
+            <div class="event-astrology lang-te-content telugu-text">
+              మ॥గం॥ 12-30 ని॥ల నుండి భోజన తాంబూలాదులు
+            </div>
+
+            <p class="event-desc lang-en-content">
+              Please join us for delicious festive meals and blessings.
+            </p>
+            <p class="event-desc lang-te-content telugu-text">
+              భోజన తాంబూలాదులను స్వీకరించి మమ్మానందింపజేయ ప్రార్థన.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 6. Venue & Live Google Navigation -->
+      <section class="venue-section">
+        <div class="section-heading" style="margin-bottom: 15px;">
+          <h3 class="lang-en-content"><i class="fa fa-map-marked-alt"></i> Venue & Directions</h3>
+          <h3 class="lang-te-content telugu-text"><i class="fa fa-map-marked-alt"></i> కళ్యాణ వేదిక</h3>
+        </div>
+
+        <h3 class="venue-name lang-en-content">Aarthi Reddy Gardens</h3>
+        <h3 class="venue-name lang-te-content telugu-text">ఆర్తి రెడ్డి గార్డెన్స్</h3>
+
+        <p class="venue-address">
+          Yellandu Bypass Road, Mahabubabad, Telangana - 506101<br>
+          <span class="telugu-text">ఇల్లందు బైపాస్ రోడ్, మహబూబాబాద్</span>
+        </p>
+
+        <div class="venue-actions">
+          <a href="https://www.google.com/maps/search/?api=1&query=Aarthi+Reddy+Gardens+Yellandu+Bypass+Road+Mahabubabad" target="_blank" rel="noopener noreferrer" class="action-btn primary">
+            <i class="fa fa-location-arrow"></i> Navigate in Google Maps
+          </a>
+          <button id="copy-address-btn" class="action-btn secondary">
+            <i class="fa fa-copy"></i> Copy Address
+          </button>
+        </div>
+
+        <div class="map-container">
+          <iframe 
+            src="https://maps.google.com/maps?q=Aarthi+Gardens+Mahabubabad+Telangana&t=&z=15&ie=UTF8&iwloc=&output=embed" 
+            title="Aarthi Reddy Gardens Map" 
+            loading="lazy" 
+            allowfullscreen>
+          </iframe>
+        </div>
+      </section>
+
+      <!-- 7. Pre-Wedding Moments Gallery -->
+      <section class="gallery-section">
+        <div class="section-heading">
+          <h3 class="lang-en-content">Captured Moments</h3>
+          <h3 class="lang-te-content telugu-text">మధుర జ్ఞాపకాలు</h3>
+          <div class="royal-divider">
+            <div class="line"></div>
+            <i class="fa fa-camera-retro icon"></i>
+            <div class="line"></div>
+          </div>
+        </div>
+
+        <div class="gallery-grid">
+          <div class="gallery-item">
+            <img src="./assets/img/couple_rings.jpg" alt="Rings Silhouette" class="zoomable-img" data-fullsrc="./assets/img/couple_rings.jpg" loading="lazy">
+            <div class="gallery-overlay">
+              <span class="gallery-caption">Together Forever 💍</span>
+            </div>
+          </div>
+          <div class="gallery-item">
+            <img src="./assets/img/couple_temple1.jpg" alt="Temple Steps Portrait" class="zoomable-img" data-fullsrc="./assets/img/couple_temple1.jpg" loading="lazy">
+            <div class="gallery-overlay">
+              <span class="gallery-caption">Smiles of Togetherness</span>
+            </div>
+          </div>
+          <div class="gallery-item">
+            <img src="./assets/img/bride_solo.jpg" alt="Spandana Keerthi Portrait" class="zoomable-img" data-fullsrc="./assets/img/bride_solo.jpg" loading="lazy">
+            <div class="gallery-overlay">
+              <span class="gallery-caption">The Radiant Bride</span>
+            </div>
+          </div>
+          <div class="gallery-item">
+            <img src="./assets/img/couple_temple2.jpg" alt="Carved Stone Pillars" class="zoomable-img" data-fullsrc="./assets/img/couple_temple2.jpg" loading="lazy">
+            <div class="gallery-overlay">
+              <span class="gallery-caption">Sacred Heritage</span>
+            </div>
+          </div>
+          <div class="gallery-item">
+            <img src="./assets/img/couple_temple3.jpg" alt="Sitting Together" class="zoomable-img" data-fullsrc="./assets/img/couple_temple3.jpg" loading="lazy">
+            <div class="gallery-overlay">
+              <span class="gallery-caption">Steps to Eternity</span>
+            </div>
+          </div>
+          <div class="gallery-item">
+            <img src="./assets/img/couple_temple4.jpg" alt="Candid Gaze" class="zoomable-img" data-fullsrc="./assets/img/couple_temple4.jpg" loading="lazy">
+            <div class="gallery-overlay">
+              <span class="gallery-caption">Cherished Moments</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 8. Physical Printed Invitation Card Viewer & Download -->
+      <section class="card-showcase-section">
+        <div class="section-heading">
+          <h3 class="lang-en-content">Official Invitation Card</h3>
+          <h3 class="lang-te-content telugu-text">అసలైన వివాహ ఆహ్వాన పత్రిక</h3>
+          <p style="font-size: 0.9rem; color: var(--text-muted); margin-top: 4px;">
+            Click on any card to view in full resolution or download
+          </p>
+        </div>
+
+        <div class="card-preview-grid">
+          <div class="card-preview-card">
+            <img src="./assets/img/card_cover.jpg" alt="Invitation Envelope Cover" class="card-preview-thumb zoomable-img" data-fullsrc="./assets/img/card_cover.jpg">
+            <div class="card-preview-title telugu-text">భట్టు వారి పెండ్లిపిలుపు (Envelope Cover)</div>
+          </div>
+          <div class="card-preview-card">
+            <img src="./assets/img/card_inside.jpg" alt="Inside Wedding Card" class="card-preview-thumb zoomable-img" data-fullsrc="./assets/img/card_inside.jpg">
+            <div class="card-preview-title telugu-text">శుభలేఖ (Inside Wedding Card Spread)</div>
+          </div>
+        </div>
+
+        <div style="margin-top: 15px;">
+          <a href="./assets/img/card_inside.jpg" download="Rajesh_Keerthi_Wedding_Invitation.jpg" class="action-btn primary">
+            <i class="fa fa-download"></i> Download High-Res Invitation Card
+          </a>
+        </div>
+      </section>
+
+      <!-- 9. Heartfelt Note from Nephew -->
+      <section class="nephew-card">
+        <div class="nephew-badge">
+          <i class="fa fa-heart"></i> చిన్ని మేనల్లుడు పిలుపు
+        </div>
+        <div class="nephew-quote telugu-text">
+          "మా మామయ్య పెండ్లికి తప్పక రండి..."
+        </div>
+        <div class="nephew-author telugu-text">
+          మీ... లోకేష్ గౌడ్ (Master Lokesh Goud)
+        </div>
+      </section>
+
+      <!-- 10. Family Lineage & Compliments -->
+      <section class="family-blessings">
+        <h4 class="family-title lang-en-content">With Compliments From Near & Dear</h4>
+        <h4 class="family-title lang-te-content telugu-text">భవదీయులు & బంధుమిత్రుల అభినందనలు</h4>
+
+        <div class="family-list lang-en-content">
+          <strong>Invited By:</strong> Smt. & Sri Bhattu Upendra - Yaladri Goud<br>
+          <strong>Sister & Brother-in-law:</strong> Narati Swathi - Sudhakar<br>
+          <strong>Grandparents:</strong> Bali Sugunamma - Chandraiah (Late), Bhattu Achamma (Late) - Dargaiah (Late)<br>
+          And all uncles, aunts, brothers, sisters, family, and well-wishers.
+        </div>
+
+        <div class="family-list lang-te-content telugu-text">
+          <strong>భవదీయులు:</strong> శ్రీమతి & శ్రీ <strong>భట్టు ఉపేంద్ర - యాలాద్రి గౌడ్</strong><br>
+          <strong>అక్క-బావ:</strong> నరాటి స్వాతి-సుధాకర్, <strong>అమ్మమ్మ-తాతయ్య:</strong> బలి సుగుణమ్మ-చంద్రయ్య(లేటు),<br>
+          <strong>నానమ్మ-తాతయ్య:</strong> భట్టు అచ్చమ్మ(లేటు)-దర్గయ్య(లేటు), పెద్దనాన్నలు-పెద్దమ్మలు, బాబాయిలు-చిన్నమ్మలు,<br>
+          మామయ్యలు-అత్తమ్మలు, అక్కలు-బావలు, అన్నలు-వదినలు, చెల్లెండ్లు, తమ్ముళ్ళు గార్ల మరియు బంధుమిత్రుల అభినందనలతో...
+        </div>
+      </section>
+
+      <!-- 11. RSVP & Contact Chips -->
+      <section class="rsvp-section">
+        <h3 class="rsvp-title">Join Us In Our Happiness!</h3>
+        <p class="rsvp-sub">Please contact us for any assistance or venue directions:</p>
+
+        <div class="contacts-grid">
+          <a href="tel:+917658988951" class="contact-chip">
+            <i class="fa fa-phone-alt"></i> +91 7658988951
+          </a>
+          <a href="tel:+919912317654" class="contact-chip">
+            <i class="fa fa-phone-alt"></i> +91 9912317654
+          </a>
+          <a href="https://api.whatsapp.com/send?phone=917658988951&text=Heartiest%20Congratulations%20Rajesh%20%26%20Spandana%20Keerthi!%20Wishing%20you%20both%20a%20blessed%20and%20joyous%20married%20life!" target="_blank" rel="noopener noreferrer" class="contact-chip whatsapp">
+            <i class="fab fa-whatsapp"></i> Wish on WhatsApp
+          </a>
+        </div>
+      </section>
+
+    </article>
+  </main>
+
+  <!-- ==========================================================
+       IMAGE LIGHTBOX MODAL
+       ========================================================== -->
+  <div id="lightbox-modal" class="lightbox-modal">
+    <button id="lightbox-close" class="lightbox-close" aria-label="Close Lightbox">&times;</button>
+    <img id="lightbox-img" class="lightbox-img" src="" alt="Enlarged Wedding Photo">
+  </div>
+
+  <!-- Custom JS -->
+  <script src="./js/script.js"></script>
+</body>
+</html>

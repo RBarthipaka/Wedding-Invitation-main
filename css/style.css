@@ -1,0 +1,1554 @@
+/* ==========================================================
+   ROYAL INDIAN WEDDING INVITATION - STYLESHEET
+   Bride & Groom: Chi. Rajesh Goud & Chi.La.Sow. Spandana Keerthi
+   Enhanced with Trending Wedding Playlist, Traditional GIFs & Visual Effects
+   ========================================================== */
+
+:root {
+  --primary-maroon: #780016;
+  --dark-maroon: #4a010d;
+  --deep-wine: #360009;
+  --royal-gold: #d4af37;
+  --gold-light: #fbe38e;
+  --gold-dark: #9e7a17;
+  --gold-gradient: linear-gradient(135deg, #d4af37 0%, #fbe38e 50%, #b38b22 100%);
+  --gold-gradient-shine: linear-gradient(90deg, #b38b22 0%, #fbe38e 50%, #b38b22 100%);
+  --ivory-bg: #fcf9f2;
+  --card-bg: rgba(255, 255, 255, 0.96);
+  --text-dark: #2c1218;
+  --text-muted: #6e5058;
+  --shadow-sm: 0 4px 15px rgba(120, 0, 22, 0.08);
+  --shadow-md: 0 8px 30px rgba(120, 0, 22, 0.15);
+  --shadow-lg: 0 15px 45px rgba(74, 1, 13, 0.25);
+  --radius-lg: 20px;
+  --radius-md: 12px;
+  --radius-sm: 8px;
+  --transition: all 0.35s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* Reset & Box Sizing */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  color: var(--text-dark);
+  background-color: var(--ivory-bg);
+  background-image: 
+    radial-gradient(circle at 10% 20%, rgba(212, 175, 55, 0.06) 0%, transparent 40%),
+    radial-gradient(circle at 90% 80%, rgba(120, 0, 22, 0.05) 0%, transparent 40%),
+    radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.92) 0%, rgba(252, 249, 242, 0.98) 100%);
+  line-height: 1.6;
+  overflow-x: hidden;
+  position: relative;
+  min-height: 100vh;
+}
+
+/* Telugu typography helper */
+.telugu-text {
+  font-family: 'Mandali', 'Tiro Telugu', 'Gautami', 'Noto Sans Telugu', sans-serif !important;
+  line-height: 1.8;
+}
+
+/* Canvas Petals & Sparkles */
+#petals-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 99;
+}
+
+/* ==========================================================
+   ROYAL ENVELOPE MODAL (OPENING CEREMONY)
+   ========================================================== */
+.envelope-overlay {
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(circle at center, #570010 0%, #200005 100%);
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  transition: opacity 0.8s ease, visibility 0.8s ease, transform 0.8s ease;
+}
+
+.envelope-overlay.opened {
+  opacity: 0;
+  visibility: hidden;
+  transform: scale(1.08);
+  pointer-events: none;
+}
+
+.envelope-card {
+  width: 100%;
+  max-width: 440px;
+  background: linear-gradient(145deg, #780016 0%, #4a010d 100%);
+  border-radius: 20px;
+  border: 2px solid var(--royal-gold);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6), inset 0 0 40px rgba(0,0,0,0.5);
+  text-align: center;
+  padding: 36px 26px;
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+  animation: envelopePulse 4s infinite alternate;
+}
+
+@keyframes envelopePulse {
+  0% { transform: translateY(0px) scale(1); box-shadow: 0 20px 50px rgba(0,0,0,0.6); }
+  100% { transform: translateY(-6px) scale(1.01); box-shadow: 0 30px 70px rgba(212, 175, 55, 0.3); }
+}
+
+.envelope-card::before {
+  content: '';
+  position: absolute;
+  top: 8px; left: 8px; right: 8px; bottom: 8px;
+  border: 1px dashed rgba(212, 175, 55, 0.4);
+  border-radius: 14px;
+  pointer-events: none;
+}
+
+.envelope-ganesha {
+  width: 65px;
+  height: 65px;
+  margin: 0 auto 12px;
+  filter: drop-shadow(0 4px 8px rgba(0,0,0,0.4));
+}
+
+.envelope-shloka {
+  font-size: 0.95rem;
+  color: var(--gold-light);
+  letter-spacing: 1px;
+  margin-bottom: 6px;
+}
+
+.envelope-sub {
+  font-size: 0.82rem;
+  color: #f7d0d6;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  margin-bottom: 16px;
+}
+
+.envelope-monogram {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 16px;
+  border-radius: 50%;
+  background: var(--gold-gradient);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Cinzel Decorative', 'Cinzel', serif;
+  font-size: 1.7rem;
+  font-weight: 700;
+  color: var(--dark-maroon);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.5), inset 0 0 10px rgba(255,255,255,0.6);
+  border: 2px solid #fff;
+}
+
+.envelope-couple-names {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 8px;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.4);
+}
+
+.envelope-date-preview {
+  font-size: 0.92rem;
+  color: var(--gold-light);
+  margin-bottom: 24px;
+  font-weight: 500;
+  letter-spacing: 1px;
+}
+
+.seal-btn {
+  background: var(--gold-gradient);
+  color: var(--dark-maroon);
+  border: none;
+  border-radius: 50px;
+  padding: 13px 32px;
+  font-size: 0.98rem;
+  font-weight: 700;
+  font-family: 'Cinzel', serif;
+  letter-spacing: 1px;
+  cursor: pointer;
+  box-shadow: 0 10px 25px rgba(212, 175, 55, 0.4), inset 0 1px 2px rgba(255,255,255,0.8);
+  transition: var(--transition);
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.seal-btn:hover {
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 14px 32px rgba(212, 175, 55, 0.6);
+}
+
+.skip-btn {
+  display: block;
+  margin-top: 14px;
+  font-size: 0.8rem;
+  color: rgba(255,255,255,0.7);
+  text-decoration: underline;
+  cursor: pointer;
+  background: none;
+  border: none;
+  width: 100%;
+}
+
+/* ==========================================================
+   MULTI-TRACK WEDDING MUSIC JUKEBOX & CONTROLLER
+   ========================================================== */
+.music-controller {
+  position: fixed;
+  bottom: 22px;
+  right: 20px;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  background: rgba(74, 1, 13, 0.94);
+  backdrop-filter: blur(10px);
+  border: 1.5px solid var(--royal-gold);
+  border-radius: 50px;
+  padding: 5px 14px 5px 6px;
+  box-shadow: var(--shadow-lg);
+  transition: var(--transition);
+  gap: 8px;
+}
+
+.music-disc {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--gold-gradient);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--dark-maroon);
+  font-size: 0.95rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.music-controller.playing .music-disc {
+  animation: spinDisc 3s linear infinite;
+}
+
+@keyframes spinDisc {
+  100% { transform: rotate(360deg); }
+}
+
+.music-info {
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  max-width: 150px;
+}
+
+.music-title {
+  font-size: 0.76rem;
+  font-weight: 600;
+  color: #fff;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.music-status {
+  font-size: 0.65rem;
+  color: var(--gold-light);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.sound-wave {
+  display: inline-flex;
+  align-items: flex-end;
+  gap: 2px;
+  height: 10px;
+  margin-left: 3px;
+}
+
+.sound-wave span {
+  width: 2px;
+  height: 3px;
+  background: var(--gold-light);
+  border-radius: 1px;
+}
+
+.music-controller.playing .sound-wave span:nth-child(1) { animation: wave 0.8s infinite ease-in-out; }
+.music-controller.playing .sound-wave span:nth-child(2) { animation: wave 0.8s infinite ease-in-out 0.2s; }
+.music-controller.playing .sound-wave span:nth-child(3) { animation: wave 0.8s infinite ease-in-out 0.4s; }
+
+@keyframes wave {
+  0%, 100% { height: 3px; }
+  50% { height: 11px; }
+}
+
+/* Player Mini Controls */
+.music-nav-btn {
+  background: none;
+  border: none;
+  color: var(--gold-light);
+  cursor: pointer;
+  font-size: 0.88rem;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.music-nav-btn:hover {
+  color: #fff;
+  transform: scale(1.15);
+}
+
+.playlist-toggle-btn {
+  background: rgba(212, 175, 55, 0.2);
+  border: 1px solid rgba(212, 175, 55, 0.4);
+  color: var(--gold-light);
+  border-radius: 20px;
+  padding: 3px 8px;
+  font-size: 0.68rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  transition: var(--transition);
+}
+
+.playlist-toggle-btn:hover {
+  background: var(--royal-gold);
+  color: var(--dark-maroon);
+}
+
+/* Playlist Drawer Modal */
+.playlist-drawer {
+  position: fixed;
+  bottom: 80px;
+  right: 20px;
+  width: 320px;
+  background: rgba(74, 1, 13, 0.98);
+  border: 1.5px solid var(--royal-gold);
+  border-radius: 16px;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.6);
+  z-index: 1001;
+  padding: 16px;
+  color: #fff;
+  backdrop-filter: blur(12px);
+  transform: translateY(20px);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.playlist-drawer.active {
+  transform: translateY(0);
+  opacity: 1;
+  visibility: visible;
+}
+
+.playlist-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+  padding-bottom: 8px;
+  margin-bottom: 10px;
+}
+
+.playlist-header h4 {
+  font-family: 'Cinzel', serif;
+  font-size: 0.95rem;
+  color: var(--gold-light);
+}
+
+.playlist-close {
+  background: none;
+  border: none;
+  color: var(--gold-light);
+  font-size: 1.1rem;
+  cursor: pointer;
+}
+
+.playlist-items {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.playlist-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 10px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.06);
+  cursor: pointer;
+  transition: var(--transition);
+  border: 1px solid transparent;
+}
+
+.playlist-item:hover {
+  background: rgba(212, 175, 55, 0.15);
+  border-color: rgba(212, 175, 55, 0.4);
+}
+
+.playlist-item.active {
+  background: rgba(212, 175, 55, 0.25);
+  border-color: var(--royal-gold);
+}
+
+.track-num {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--gold-light);
+  width: 18px;
+}
+
+.track-details {
+  flex: 1;
+}
+
+.track-name {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #fff;
+  line-height: 1.2;
+}
+
+.track-sub {
+  font-size: 0.68rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.track-playing-icon {
+  font-size: 0.8rem;
+  color: var(--royal-gold);
+  display: none;
+}
+
+.playlist-item.active .track-playing-icon {
+  display: block;
+}
+
+/* ==========================================================
+   BLESS THE COUPLE INTERACTIVE CONFETTI & AKSHINTALU BUTTON
+   ========================================================== */
+.bless-couple-container {
+  text-align: center;
+  margin: 30px auto;
+  position: relative;
+  z-index: 10;
+}
+
+.bless-btn {
+  background: var(--gold-gradient);
+  color: var(--dark-maroon);
+  border: 2px solid #fff;
+  border-radius: 50px;
+  padding: 14px 34px;
+  font-size: 1.05rem;
+  font-weight: 700;
+  font-family: 'Cinzel', serif;
+  cursor: pointer;
+  box-shadow: 0 10px 30px rgba(212, 175, 55, 0.45), 0 0 0 4px rgba(120, 0, 22, 0.12);
+  transition: var(--transition);
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  animation: gentlePulse 2.5s infinite;
+}
+
+@keyframes gentlePulse {
+  0%, 100% { transform: scale(1); box-shadow: 0 8px 25px rgba(212, 175, 55, 0.4); }
+  50% { transform: scale(1.04); box-shadow: 0 14px 35px rgba(212, 175, 55, 0.7); }
+}
+
+.bless-btn:hover {
+  transform: translateY(-3px) scale(1.06);
+  background: linear-gradient(135deg, #fbe38e 0%, #d4af37 100%);
+}
+
+.bless-count-badge {
+  background: var(--primary-maroon);
+  color: var(--gold-light);
+  border-radius: 20px;
+  padding: 2px 10px;
+  font-size: 0.8rem;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Floating Blessings Banner */
+.floating-blessing-toast {
+  position: fixed;
+  top: 30%;
+  left: 50%;
+  transform: translateX(-50%) translateY(0);
+  background: linear-gradient(135deg, rgba(74, 1, 13, 0.95), rgba(120, 0, 22, 0.95));
+  color: var(--gold-light);
+  border: 2px solid var(--royal-gold);
+  border-radius: 30px;
+  padding: 12px 26px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+  z-index: 10000;
+  pointer-events: none;
+  animation: floatUpToast 2.4s forwards ease-out;
+  text-align: center;
+  max-width: 90vw;
+}
+
+@keyframes floatUpToast {
+  0% { opacity: 0; transform: translateX(-50%) translateY(30px) scale(0.9); }
+  15% { opacity: 1; transform: translateX(-50%) translateY(0) scale(1.05); }
+  25% { transform: translateX(-50%) translateY(0) scale(1); }
+  80% { opacity: 1; transform: translateX(-50%) translateY(-25px); }
+  100% { opacity: 0; transform: translateX(-50%) translateY(-50px) scale(0.95); }
+}
+
+/* ==========================================================
+   WEDDING GIFS & TRADITIONAL EMBELLISHMENTS
+   ========================================================== */
+.wedding-gif-banner {
+  text-align: center;
+  margin: 25px auto 10px;
+  max-width: 320px;
+}
+
+.gif-frame {
+  width: 100%;
+  max-width: 260px;
+  height: auto;
+  border-radius: 16px;
+  border: 2px solid rgba(212, 175, 55, 0.5);
+  box-shadow: var(--shadow-sm);
+  background: #fff;
+  padding: 6px;
+  transition: transform 0.4s ease;
+}
+
+.gif-frame:hover {
+  transform: scale(1.04);
+}
+
+.ritual-gif-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 15px 0 10px;
+}
+
+.ritual-gif {
+  max-height: 140px;
+  width: auto;
+  border-radius: 12px;
+  filter: drop-shadow(0 4px 10px rgba(120, 0, 22, 0.15));
+}
+
+/* ==========================================================
+   NAVIGATION & LANGUAGE BAR
+   ========================================================== */
+.top-nav {
+  position: sticky;
+  top: 0;
+  z-index: 500;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-brand {
+  font-family: 'Cinzel Decorative', 'Cinzel', serif;
+  font-weight: 700;
+  color: var(--primary-maroon);
+  font-size: 1.15rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.nav-brand span {
+  color: var(--royal-gold);
+}
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.lang-switch {
+  display: flex;
+  background: rgba(120, 0, 22, 0.08);
+  border-radius: 30px;
+  padding: 3px;
+  border: 1px solid rgba(212, 175, 55, 0.3);
+}
+
+.lang-btn {
+  border: none;
+  background: none;
+  padding: 5px 14px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  border-radius: 20px;
+  cursor: pointer;
+  color: var(--primary-maroon);
+  transition: var(--transition);
+}
+
+.lang-btn.active {
+  background: var(--primary-maroon);
+  color: #fff;
+  box-shadow: 0 2px 8px rgba(120, 0, 22, 0.3);
+}
+
+/* Language Visibility Rules */
+body.lang-en-active .lang-te-content { display: none !important; }
+body.lang-te-active .lang-en-content { display: none !important; }
+body.lang-both-active .lang-te-content { display: block !important; }
+body.lang-both-active .lang-en-content { display: block !important; }
+
+/* ==========================================================
+   MAIN INVITATION CONTAINER
+   ========================================================== */
+.main-wrapper {
+  max-width: 860px;
+  margin: 25px auto 90px;
+  padding: 0 16px;
+}
+
+.invitation-frame {
+  background: #ffffff;
+  border-radius: var(--radius-lg);
+  border: 2px solid var(--royal-gold);
+  box-shadow: 0 20px 50px rgba(120, 0, 22, 0.09), 0 0 0 6px rgba(212, 175, 55, 0.15);
+  position: relative;
+  padding: 40px 24px;
+  overflow: hidden;
+}
+
+/* Corner Royal Ornaments */
+.corner-ornament {
+  position: absolute;
+  width: 65px;
+  height: 65px;
+  pointer-events: none;
+  opacity: 0.85;
+}
+
+.corner-ornament.top-left { top: 0; left: 0; }
+.corner-ornament.top-right { top: 0; right: 0; transform: scaleX(-1); }
+.corner-ornament.bottom-left { bottom: 0; left: 0; transform: scaleY(-1); }
+.corner-ornament.bottom-right { bottom: 0; right: 0; transform: scale(-1); }
+
+/* Decorative Border Inset */
+.invitation-frame::after {
+  content: '';
+  position: absolute;
+  top: 12px; left: 12px; right: 12px; bottom: 12px;
+  border: 1px solid rgba(212, 175, 55, 0.35);
+  border-radius: calc(var(--radius-lg) - 6px);
+  pointer-events: none;
+}
+
+/* ==========================================================
+   SACRED HEADER & GANESHA SECTION
+   ========================================================== */
+.sacred-header {
+  text-align: center;
+  margin-bottom: 25px;
+  position: relative;
+  z-index: 2;
+}
+
+.ganesha-emblem {
+  width: 90px;
+  height: 90px;
+  margin: 0 auto 15px;
+  filter: drop-shadow(0 6px 12px rgba(212, 175, 55, 0.4));
+  animation: floatEmblem 3s ease-in-out infinite alternate;
+}
+
+@keyframes floatEmblem {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-5px); }
+}
+
+.sacred-chant {
+  font-family: 'Mandali', 'Tiro Telugu', serif;
+  font-size: 1.45rem;
+  font-weight: 700;
+  color: var(--primary-maroon);
+  letter-spacing: 1.5px;
+  margin-bottom: 8px;
+}
+
+.sacred-shloka {
+  font-family: 'Mandali', 'Tiro Telugu', serif;
+  font-size: 1.05rem;
+  color: var(--text-muted);
+  max-width: 620px;
+  margin: 0 auto 12px;
+  line-height: 1.8;
+  font-style: italic;
+}
+
+.royal-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin: 16px auto;
+  max-width: 320px;
+}
+
+.royal-divider .line {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--royal-gold), transparent);
+}
+
+.royal-divider .icon {
+  color: var(--royal-gold);
+  font-size: 1rem;
+}
+
+/* ==========================================================
+   MAIN INVITATION ANNOUNCEMENT
+   ========================================================== */
+.invitation-intro {
+  text-align: center;
+  margin-bottom: 25px;
+  padding: 0 10px;
+}
+
+.invitation-intro .lead-text {
+  font-family: 'Cinzel', serif;
+  font-size: 1.1rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--primary-maroon);
+  margin-bottom: 6px;
+  font-weight: 600;
+}
+
+.invitation-intro .sub-lead {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  max-width: 580px;
+  margin: 0 auto;
+}
+
+/* ==========================================================
+   COUPLE SHOWCASE
+   ========================================================== */
+.couple-showcase {
+  text-align: center;
+  margin: 30px 0;
+  position: relative;
+  z-index: 2;
+}
+
+.hero-portrait-wrap {
+  width: 220px;
+  height: 220px;
+  margin: 0 auto 24px;
+  position: relative;
+  border-radius: 50%;
+  padding: 8px;
+  background: var(--gold-gradient);
+  box-shadow: 0 12px 30px rgba(120, 0, 22, 0.2), 0 0 0 4px rgba(255, 255, 255, 0.9);
+}
+
+.hero-portrait-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 3px solid #fff;
+  transition: transform 0.5s ease;
+}
+
+.hero-portrait-wrap:hover .hero-portrait-img {
+  transform: scale(1.03);
+}
+
+.couple-names-wrap {
+  padding: 0 10px;
+}
+
+.groom-box, .bride-box {
+  margin: 15px 0;
+}
+
+.person-prefix {
+  font-size: 0.95rem;
+  color: var(--royal-gold);
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+.person-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.35rem;
+  font-weight: 700;
+  color: var(--primary-maroon);
+  line-height: 1.2;
+  margin: 4px 0 6px;
+  text-shadow: 0 1px 3px rgba(120, 0, 22, 0.1);
+}
+
+.person-details {
+  font-size: 0.92rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+  max-width: 540px;
+  margin: 0 auto;
+}
+
+.knot-separator {
+  margin: 15px auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.knot-badge {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--gold-gradient);
+  color: var(--dark-maroon);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Great Vibes', cursive;
+  font-size: 1.8rem;
+  font-weight: bold;
+  box-shadow: 0 4px 12px rgba(212, 175, 55, 0.35);
+  border: 2px solid #fff;
+}
+
+/* ==========================================================
+   COUNTDOWN TIMER
+   ========================================================== */
+.countdown-section {
+  background: linear-gradient(145deg, #780016 0%, #4a010d 100%);
+  border-radius: var(--radius-md);
+  padding: 28px 20px;
+  text-align: center;
+  color: #fff;
+  margin: 30px 0;
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--royal-gold);
+  position: relative;
+  overflow: hidden;
+}
+
+.countdown-section::before {
+  content: '';
+  position: absolute;
+  top: -50px; right: -50px;
+  width: 140px; height: 140px;
+  background: radial-gradient(circle, rgba(212, 175, 55, 0.18) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.countdown-title {
+  font-family: 'Cinzel', serif;
+  font-size: 1.15rem;
+  color: var(--gold-light);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 18px;
+}
+
+.countdown-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  max-width: 520px;
+  margin: 0 auto;
+}
+
+.timer-box {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(212, 175, 55, 0.35);
+  border-radius: 12px;
+  padding: 14px 6px;
+  backdrop-filter: blur(4px);
+  transition: transform 0.3s ease;
+}
+
+.timer-box:hover {
+  transform: translateY(-3px);
+  border-color: var(--royal-gold);
+}
+
+.timer-num {
+  font-family: 'Cinzel', serif;
+  font-size: 2.1rem;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.4);
+}
+
+.timer-label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--gold-light);
+  margin-top: 6px;
+}
+
+.countdown-note {
+  margin-top: 16px;
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.85);
+  letter-spacing: 0.5px;
+}
+
+/* ==========================================================
+   EVENT DETAILS & MUHURTHAM CARDS
+   ========================================================== */
+.events-section {
+  margin: 35px 0;
+}
+
+.section-heading {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.section-heading h3 {
+  font-family: 'Cinzel', serif;
+  font-size: 1.6rem;
+  color: var(--primary-maroon);
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.events-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.event-card {
+  background: #fff;
+  border-radius: var(--radius-md);
+  border: 1.5px solid rgba(212, 175, 55, 0.4);
+  padding: 26px 22px;
+  box-shadow: var(--shadow-sm);
+  text-align: center;
+  position: relative;
+  transition: var(--transition);
+}
+
+.event-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--royal-gold);
+}
+
+.event-card.featured {
+  background: linear-gradient(to bottom, #ffffff 0%, #fdf8ee 100%);
+  border: 2px solid var(--royal-gold);
+}
+
+.event-badge {
+  display: inline-block;
+  background: var(--gold-gradient);
+  color: var(--dark-maroon);
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 4px 14px;
+  border-radius: 20px;
+  margin-bottom: 14px;
+}
+
+.event-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: rgba(120, 0, 22, 0.08);
+  color: var(--primary-maroon);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  margin: 0 auto 14px;
+}
+
+.event-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.35rem;
+  color: var(--primary-maroon);
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.event-date {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-dark);
+  margin-bottom: 4px;
+}
+
+.event-time {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--primary-maroon);
+  margin-bottom: 8px;
+}
+
+.event-astrology {
+  font-size: 0.88rem;
+  color: var(--gold-dark);
+  font-weight: 500;
+  background: rgba(212, 175, 55, 0.12);
+  padding: 6px 12px;
+  border-radius: 8px;
+  margin-bottom: 12px;
+}
+
+.event-desc {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+/* ==========================================================
+   VENUE & NAVIGATION SECTION
+   ========================================================== */
+.venue-section {
+  margin: 35px 0;
+  background: #ffffff;
+  border-radius: var(--radius-md);
+  border: 1.5px solid rgba(212, 175, 55, 0.4);
+  padding: 30px 24px;
+  box-shadow: var(--shadow-sm);
+  text-align: center;
+}
+
+.venue-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.65rem;
+  color: var(--primary-maroon);
+  font-weight: 700;
+  margin: 8px 0;
+}
+
+.venue-address {
+  font-size: 1rem;
+  color: var(--text-muted);
+  margin-bottom: 22px;
+  line-height: 1.6;
+}
+
+.venue-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.action-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 24px;
+  border-radius: 50px;
+  font-size: 0.92rem;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  border: none;
+  transition: var(--transition);
+}
+
+.action-btn.primary {
+  background: var(--gold-gradient);
+  color: var(--dark-maroon);
+  box-shadow: 0 4px 15px rgba(212, 175, 55, 0.35);
+}
+
+.action-btn.primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 22px rgba(212, 175, 55, 0.5);
+}
+
+.action-btn.secondary {
+  background: rgba(120, 0, 22, 0.08);
+  color: var(--primary-maroon);
+  border: 1px solid rgba(120, 0, 22, 0.2);
+}
+
+.action-btn.secondary:hover {
+  background: var(--primary-maroon);
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+.map-container {
+  width: 100%;
+  height: 280px;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  box-shadow: inset 0 0 10px rgba(0,0,0,0.05);
+}
+
+.map-container iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+/* ==========================================================
+   PHOTO GALLERY ("CAPTURED MOMENTS")
+   ========================================================== */
+.gallery-section {
+  margin: 40px 0;
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 16px;
+}
+
+.gallery-item {
+  position: relative;
+  border-radius: 14px;
+  overflow: hidden;
+  aspect-ratio: 3/4;
+  cursor: pointer;
+  box-shadow: var(--shadow-sm);
+  border: 2px solid rgba(212, 175, 55, 0.3);
+  background: #f0eae1;
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.gallery-item:hover img {
+  transform: scale(1.08);
+}
+
+.gallery-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(74, 1, 13, 0.8) 0%, transparent 60%);
+  display: flex;
+  align-items: flex-end;
+  padding: 16px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.gallery-item:hover .gallery-overlay {
+  opacity: 1;
+}
+
+.gallery-caption {
+  color: #fff;
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+/* ==========================================================
+   PHYSICAL INVITATION CARD SHOWCASE
+   ========================================================== */
+.card-showcase-section {
+  margin: 40px 0;
+  background: linear-gradient(to bottom, #ffffff 0%, #faf4e8 100%);
+  border-radius: var(--radius-md);
+  border: 1.5px solid var(--royal-gold);
+  padding: 30px 20px;
+  text-align: center;
+}
+
+.card-preview-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+  margin: 20px 0;
+}
+
+.card-preview-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 12px;
+  border: 1px solid rgba(212, 175, 55, 0.35);
+  box-shadow: var(--shadow-sm);
+}
+
+.card-preview-thumb {
+  width: 100%;
+  height: 280px;
+  object-fit: contain;
+  background: #faf7f2;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.card-preview-thumb:hover {
+  transform: scale(1.02);
+}
+
+.card-preview-title {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--primary-maroon);
+  margin-top: 10px;
+}
+
+/* ==========================================================
+   SPECIAL MESSAGE FROM LITTLE NEPHEW & FAMILY
+   ========================================================== */
+.nephew-card {
+  margin: 35px 0;
+  background: radial-gradient(circle at top left, #fff7ea 0%, #ffffff 100%);
+  border: 2px dashed var(--royal-gold);
+  border-radius: var(--radius-md);
+  padding: 26px 20px;
+  text-align: center;
+  position: relative;
+  box-shadow: var(--shadow-sm);
+}
+
+.nephew-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--primary-maroon);
+  color: var(--gold-light);
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 4px 14px;
+  border-radius: 20px;
+  margin-bottom: 12px;
+}
+
+.nephew-quote {
+  font-family: 'Mandali', 'Tiro Telugu', serif;
+  font-size: 1.35rem;
+  color: var(--primary-maroon);
+  font-weight: 700;
+  line-height: 1.8;
+  margin: 8px 0;
+}
+
+.nephew-author {
+  font-size: 1rem;
+  color: var(--gold-dark);
+  font-weight: 700;
+}
+
+/* Family Blessings Box */
+.family-blessings {
+  margin: 35px 0;
+  background: #ffffff;
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(212, 175, 55, 0.35);
+  padding: 26px 20px;
+  text-align: center;
+}
+
+.family-title {
+  font-family: 'Cinzel', serif;
+  font-size: 1.25rem;
+  color: var(--primary-maroon);
+  margin-bottom: 14px;
+  font-weight: 700;
+}
+
+.family-list {
+  font-size: 0.92rem;
+  color: var(--text-muted);
+  line-height: 1.9;
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+/* ==========================================================
+   RSVP & WHATSAPP GREETINGS
+   ========================================================== */
+.rsvp-section {
+  margin: 35px 0 10px;
+  background: linear-gradient(145deg, #780016 0%, #4a010d 100%);
+  border-radius: var(--radius-md);
+  padding: 32px 22px;
+  text-align: center;
+  color: #fff;
+  border: 1.5px solid var(--royal-gold);
+  box-shadow: var(--shadow-md);
+}
+
+.rsvp-title {
+  font-family: 'Cinzel', serif;
+  font-size: 1.45rem;
+  color: var(--gold-light);
+  margin-bottom: 8px;
+}
+
+.rsvp-sub {
+  font-size: 0.92rem;
+  color: #f7d0d6;
+  margin-bottom: 24px;
+}
+
+.contacts-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
+}
+
+.contact-chip {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(212, 175, 55, 0.4);
+  border-radius: 50px;
+  padding: 10px 22px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: #fff;
+  text-decoration: none;
+  font-size: 0.92rem;
+  font-weight: 500;
+  transition: var(--transition);
+}
+
+.contact-chip:hover {
+  background: var(--gold-gradient);
+  color: var(--dark-maroon);
+  transform: translateY(-2px);
+  border-color: #fff;
+}
+
+.contact-chip.whatsapp {
+  background: #25d366;
+  border-color: #25d366;
+  color: #fff;
+}
+
+.contact-chip.whatsapp:hover {
+  background: #1eb855;
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+/* ==========================================================
+   LIGHTBOX MODAL
+   ========================================================== */
+.lightbox-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.92);
+  z-index: 10000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  padding: 20px;
+}
+
+.lightbox-modal.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.lightbox-img {
+  max-width: 90vw;
+  max-height: 85vh;
+  object-fit: contain;
+  border-radius: 8px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+  border: 2px solid var(--royal-gold);
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 20px;
+  right: 25px;
+  color: #fff;
+  font-size: 2rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.lightbox-close:hover {
+  color: var(--royal-gold);
+}
+
+/* ==========================================================
+   TOAST NOTIFICATION
+   ========================================================== */
+.toast-notice {
+  position: fixed;
+  bottom: 80px;
+  left: 50%;
+  transform: translateX(-50%) translateY(50px);
+  background: var(--dark-maroon);
+  color: var(--gold-light);
+  padding: 10px 22px;
+  border-radius: 30px;
+  border: 1px solid var(--royal-gold);
+  font-size: 0.88rem;
+  font-weight: 500;
+  box-shadow: var(--shadow-lg);
+  z-index: 9999;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.35s ease;
+}
+
+.toast-notice.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* ==========================================================
+   RESPONSIVE DESIGN (FULL MOBILE OPTIMIZED)
+   ========================================================== */
+@media (max-width: 768px) {
+  .invitation-frame {
+    padding: 28px 14px;
+    border-radius: 16px;
+  }
+
+  .person-name {
+    font-size: 1.85rem;
+  }
+
+  .countdown-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 6px;
+  }
+
+  .timer-box {
+    padding: 10px 4px;
+  }
+
+  .timer-num {
+    font-size: 1.55rem;
+  }
+
+  .timer-label {
+    font-size: 0.65rem;
+  }
+
+  .hero-portrait-wrap {
+    width: 175px;
+    height: 175px;
+  }
+
+  .music-controller {
+    bottom: 14px;
+    right: 12px;
+    padding: 4px 10px 4px 4px;
+    gap: 5px;
+  }
+
+  .music-title {
+    max-width: 100px;
+    font-size: 0.7rem;
+  }
+
+  .music-disc {
+    width: 34px;
+    height: 34px;
+    font-size: 0.85rem;
+  }
+
+  .playlist-drawer {
+    right: 12px;
+    bottom: 72px;
+    width: calc(100vw - 24px);
+    max-width: 320px;
+  }
+
+  .gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  .bless-btn {
+    font-size: 0.92rem;
+    padding: 12px 24px;
+  }
+}
+
+@media (max-width: 420px) {
+  .countdown-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .timer-num {
+    font-size: 1.3rem;
+  }
+
+  .timer-label {
+    font-size: 0.58rem;
+    letter-spacing: 0.5px;
+  }
+
+  .venue-actions {
+    flex-direction: column;
+  }
+
+  .action-btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .music-info {
+    max-width: 85px;
+  }
+}
