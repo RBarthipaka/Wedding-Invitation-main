@@ -401,10 +401,10 @@ function initCountdown() {
    5. BILINGUAL LANGUAGE SWITCHER (EN / TE / BOTH)
    ========================================================== */
 function initLanguageSwitcher() {
+  document.body.classList.add('lang-both-active');
+
   const btns = document.querySelectorAll('.lang-btn');
   if (!btns.length) return;
-
-  document.body.classList.add('lang-both-active');
 
   btns.forEach(btn => {
     btn.addEventListener('click', () => {

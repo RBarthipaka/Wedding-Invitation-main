@@ -580,7 +580,7 @@ body {
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
   padding: 10px 20px;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   width: 100%;
   box-sizing: border-box;
@@ -590,32 +590,21 @@ body {
   font-family: 'Cinzel Decorative', 'Cinzel', serif;
   font-weight: 700;
   color: var(--primary-maroon);
-  font-size: 1.15rem;
+  font-size: 1.25rem;
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 8px;
-  min-width: 0;
+  text-align: center;
 }
 
 .nav-brand span {
   color: var(--royal-gold);
 }
 
-.nav-actions {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  flex-shrink: 0;
-}
-
+.nav-actions,
 .lang-switch {
-  display: flex;
-  align-items: center;
-  background: rgba(120, 0, 22, 0.08);
-  border-radius: 30px;
-  padding: 3px;
-  border: 1px solid rgba(212, 175, 55, 0.3);
-  flex-shrink: 0;
+  display: none !important;
 }
 
 .lang-btn {
@@ -1467,22 +1456,14 @@ body.lang-both-active .lang-en-content { display: block !important; }
    ========================================================== */
 @media (max-width: 768px) {
   .top-nav {
-    padding: 8px 14px;
-    gap: 8px;
+    padding: 10px 14px;
+    justify-content: center;
   }
 
   .nav-brand {
-    font-size: 1rem;
+    font-size: 1.15rem;
     white-space: nowrap;
-  }
-
-  .lang-switch {
-    padding: 2px;
-  }
-
-  .lang-btn {
-    padding: 4px 10px;
-    font-size: 0.78rem;
+    text-align: center;
   }
 
   .invitation-frame {
@@ -1555,37 +1536,13 @@ body.lang-both-active .lang-en-content { display: block !important; }
 @media (max-width: 520px) {
   .top-nav {
     padding: 8px 10px;
-    gap: 6px;
+    justify-content: center;
   }
 
   .nav-brand {
-    font-size: 0.88rem;
+    font-size: 1.05rem;
     white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    letter-spacing: 0;
-  }
-
-  .nav-brand span {
-    margin: 0 1px;
-  }
-
-  .nav-actions {
-    gap: 4px;
-    flex-shrink: 0;
-  }
-
-  .lang-switch {
-    padding: 2px;
-    gap: 2px;
-    border-radius: 20px;
-  }
-
-  .lang-btn {
-    padding: 4px 7px;
-    font-size: 0.72rem;
-    border-radius: 14px;
-    letter-spacing: 0;
+    text-align: center;
   }
 }
 
@@ -1619,16 +1576,11 @@ body.lang-both-active .lang-en-content { display: block !important; }
 
 @media (max-width: 360px) {
   .top-nav {
-    padding: 6px 6px;
-    gap: 4px;
+    padding: 6px 8px;
+    justify-content: center;
   }
 
   .nav-brand {
-    font-size: 0.78rem;
-  }
-
-  .lang-btn {
-    padding: 3px 5px;
-    font-size: 0.68rem;
+    font-size: 0.95rem;
   }
 }
