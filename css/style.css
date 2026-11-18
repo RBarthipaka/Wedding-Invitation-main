@@ -143,8 +143,8 @@ body {
 }
 
 .envelope-monogram {
-  width: 80px;
-  height: 80px;
+  width: 86px;
+  height: 86px;
   margin: 0 auto 16px;
   border-radius: 50%;
   background: var(--gold-gradient);
@@ -152,11 +152,24 @@ body {
   align-items: center;
   justify-content: center;
   font-family: 'Cinzel Decorative', 'Cinzel', serif;
-  font-size: 1.7rem;
+  font-size: 1.32rem;
   font-weight: 700;
   color: var(--dark-maroon);
   box-shadow: 0 8px 25px rgba(0,0,0,0.5), inset 0 0 10px rgba(255,255,255,0.6);
   border: 2px solid #fff;
+  white-space: nowrap;
+  line-height: 1;
+  text-align: center;
+  letter-spacing: 0.5px;
+}
+
+.envelope-monogram .amp {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 0.85em;
+  font-weight: 600;
+  margin: 0 3px;
+  color: var(--primary-maroon);
 }
 
 .envelope-couple-names {

@@ -82,8 +82,12 @@ function initMusicPlayer() {
     if (statusEl) {
       statusEl.innerHTML = isAudioPlaying 
         ? 'Playing <div class="sound-wave"><span></span><span></span><span></span></div>' 
-        : 'Paused';
+        : (audioPlayer.currentTime > 0 ? 'Paused' : 'Play Music');
     }
+
+    try {
+      localStorage.setItem('wedding_last_played_track', currentTrackIndex.toString());
+    } catch (e) {}
 
     // Update playlist UI
     playlistItems.forEach((item, idx) => {
@@ -186,6 +190,10 @@ function initMusicPlayer() {
   // Auto-start on first user interaction if not started yet
   const firstPlay = () => {
     if (audioPlayer.paused && !isAudioPlaying) {
+      const track = playlist[currentTrackIndex];
+      if (track && track.startTime && audioPlayer.currentTime < (track.startTime - 0.3)) {
+        try { audioPlayer.currentTime = track.startTime; } catch (e) {}
+      }
       audioPlayer.play().then(() => {
         isAudioPlaying = true;
         if (controller) controller.classList.add('playing');
@@ -199,6 +207,22 @@ function initMusicPlayer() {
 
   window.addEventListener('click', firstPlay, { once: true });
   window.addEventListener('touchstart', firstPlay, { once: true });
+
+  // Intelligent Track Rotation:
+  // Randomizes the starting song for visitors (50% Madhuvaramae / 50% Mangala Nadaswaram)
+  // and alternates between visits so visitors enjoy both songs!
+  let startTrack = 0;
+  try {
+    const lastTrack = localStorage.getItem('wedding_last_played_track');
+    if (lastTrack !== null) {
+      startTrack = (parseInt(lastTrack, 10) + 1) % playlist.length;
+    } else {
+      startTrack = Math.random() < 0.5 ? 0 : 1;
+    }
+  } catch (e) {
+    startTrack = Math.random() < 0.5 ? 0 : 1;
+  }
+  loadTrack(startTrack, false);
 }
 
 /* ==========================================================
